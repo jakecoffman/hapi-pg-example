@@ -1,13 +1,12 @@
 const Joi = require('joi');
+const controller = require('./todoController');
 
 module.exports = [
   {
     method: 'GET',
     path: '/todo',
     options: {
-      handler: function (request, h) {
-        return [{"id": 1}, {"id": 2}, {"id": 3}]
-      },
+      handler: controller.listTodos,
       description: 'List todos',
       tags: ['api'],
       validate: {
@@ -21,9 +20,7 @@ module.exports = [
     method: 'POST',
     path: '/todo',
     options: {
-      handler: function (request, h) {
-        return "Hello, world!";
-      },
+      handler: controller.createTodo,
       description: 'Add a todo',
       tags: ['api'],
       validate: {
@@ -37,9 +34,7 @@ module.exports = [
     method: 'GET',
     path: '/todo/{id}',
     options: {
-      handler: function (request, h) {
-        return "Hello, world!";
-      },
+      handler: controller.getTodo,
       description: 'Get a todo',
       tags: ['api'],
       validate: {
@@ -53,9 +48,7 @@ module.exports = [
     method: 'PUT',
     path: '/todo/{id}',
     options: {
-      handler: function (request, h) {
-        return "Hello, world!";
-      },
+      handler: controller.updateTodo,
       description: 'Update a todo',
       tags: ['api'],
       validate: {
@@ -72,9 +65,7 @@ module.exports = [
     method: 'DELETE',
     path: '/todo/{id}',
     options: {
-      handler: function (request, h) {
-        return "Hello, world!";
-      },
+      handler: controller.deleteTodo,
       description: 'Delete a todo',
       tags: ['api'],
       validate: {
