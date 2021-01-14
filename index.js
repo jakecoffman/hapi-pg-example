@@ -37,4 +37,6 @@ const Pack = require('./package');
   } catch (err) {
     console.log(err);
   }
+
+  require('./db').connect()
 })();

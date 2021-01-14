@@ -11,7 +11,7 @@ module.exports = [
       tags: ['api'],
       validate: {
         query: Joi.object({
-          limit: Joi.number().optional().description('Limit the amount of todos returned'),
+          limit: Joi.number().optional().default(1000).min(0).max(1000).description('Limit the amount of todos returned'),
         })
       }
     },
@@ -25,7 +25,8 @@ module.exports = [
       tags: ['api'],
       validate: {
         payload: Joi.object({
-          entry: Joi.string().required().description("the todo body")
+          entry: Joi.string().required().description("the todo body"),
+          metadata: Joi.object().optional().default({})
         })
       }
     },
@@ -56,7 +57,8 @@ module.exports = [
           id: Joi.number().required().description('the id for the todo item'),
         }),
         payload: Joi.object({
-          entry: Joi.string().required().description("the todo body")
+          entry: Joi.string().required().description("the todo body"),
+          metadata: Joi.object().optional().default({})
         })
       }
     },
